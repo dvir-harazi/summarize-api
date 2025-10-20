@@ -45,10 +45,10 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Return structured JSON response
 
 ### 6. Add Error Handling
-- [ ] Handle invalid input errors (400)
-- [ ] Handle LLM API errors (502/503)
-- [ ] Handle token limit exceeded (413)
-- [ ] Add generic error handler middleware
+- [x] Handle invalid input errors (400)
+- [x] Handle LLM API errors (502/503)
+- [x] Handle token limit exceeded (413)
+- [x] Add generic error handler middleware
 
 ### 7. Dockerize Application
 - [ ] Create `Dockerfile` for Node.js/TypeScript app
