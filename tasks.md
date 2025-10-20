@@ -57,9 +57,9 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Test Docker build and run
 
 ### 8. Create API Documentation
-- [ ] Generate Postman collection JSON file
-- [ ] Document request/response examples
-- [ ] Include error response examples
+- [x] Generate Postman collection JSON file
+- [x] Document request/response examples
+- [x] Include error response examples
 
 ### 9. Test & Validate
 - [ ] Test endpoint with sample text inputs

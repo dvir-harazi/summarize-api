@@ -1,0 +1,310 @@
+{
+  "info": {
+    "name": "AI Summarization API",
+    "description": "API for text summarization using Hugging Face LLMs. Accepts text input and returns structured JSON with title, summary, keywords, and sentiment analysis.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "summarize-api-v1"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API server is running and healthy."
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"ok\",\n  \"timestamp\": \"2025-10-20T10:00:00.000Z\",\n  \"uptime\": 123.456\n}"
+        }
+      ]
+    },
+    {
+      "name": "Summarize Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Artificial intelligence (AI) is transforming industries worldwide. From healthcare to finance, AI technologies are enabling automation, improving decision-making, and creating new opportunities. Machine learning algorithms can now analyze vast amounts of data in seconds, identifying patterns that humans might miss. However, the rapid advancement of AI also raises important ethical questions about privacy, job displacement, and algorithmic bias that society must address.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/summarize",
+          "host": ["{{base_url}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Accepts text input and returns a structured summary with title, key points, keywords, and sentiment analysis."
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Artificial intelligence (AI) is transforming industries worldwide. From healthcare to finance, AI technologies are enabling automation, improving decision-making, and creating new opportunities. Machine learning algorithms can now analyze vast amounts of data in seconds, identifying patterns that humans might miss. However, the rapid advancement of AI also raises important ethical questions about privacy, job displacement, and algorithmic bias that society must address.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"title\": \"AI Transformation and Ethical Challenges\",\n  \"summary\": \"Artificial intelligence is revolutionizing multiple industries by enabling automation and enhanced decision-making through machine learning. While AI offers tremendous opportunities, it also presents significant ethical challenges regarding privacy, employment, and algorithmic fairness.\",\n  \"keywords\": [\n    \"artificial intelligence\",\n    \"machine learning\",\n    \"automation\",\n    \"ethics\",\n    \"privacy\",\n    \"job displacement\"\n  ],\n  \"sentiment\": \"mixed\"\n}"
+        },
+        {
+          "name": "Error - Empty Text",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"Invalid request parameters\",\n    \"details\": \"text: String must contain at least 1 character(s)\"\n  }\n}"
+        },
+        {
+          "name": "Error - Missing Text Field",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Some text here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {\n    \"code\": \"INVALID_REQUEST\",\n    \"message\": \"Invalid request parameters\",\n    \"details\": \"text: Required\"\n  }\n}"
+        },
+        {
+          "name": "Error - Token Limit Exceeded",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"[Text with more than 10,000 tokens...]\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Payload Too Large",
+          "code": 413,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {\n    \"code\": \"TOKEN_LIMIT_EXCEEDED\",\n    \"message\": \"Input exceeds maximum token limit of 10,000 tokens\",\n    \"details\": \"Current input: ~12500 tokens (max: 10000)\"\n  }\n}"
+        },
+        {
+          "name": "Error - LLM Service Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Sample text for summarization.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Bad Gateway",
+          "code": 502,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {\n    \"code\": \"LLM_SERVICE_ERROR\",\n    \"message\": \"External LLM service error\",\n    \"details\": \"Failed to connect to Hugging Face API\"\n  }\n}"
+        },
+        {
+          "name": "Error - LLM Service Unavailable",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Sample text for summarization.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["api", "summarize"]
+            }
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"error\": {\n    \"code\": \"LLM_SERVICE_UNAVAILABLE\",\n    \"message\": \"LLM service temporarily unavailable\",\n    \"details\": \"Model is loading. Please retry in a few moments.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Summarize - Short Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Climate change is one of the most pressing issues of our time. Rising temperatures, extreme weather events, and melting ice caps are clear indicators that action is needed now.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/summarize",
+          "host": ["{{base_url}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Example with shorter text to test summarization."
+      },
+      "response": []
+    },
+    {
+      "name": "Summarize - Technical Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds optional static typing to JavaScript, which can help catch errors early through type checking. TypeScript code is transformed into JavaScript code via the TypeScript compiler or Babel. This JavaScript is clean, simple code which runs anywhere JavaScript runs: In a browser, on Node.js or in your apps.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/summarize",
+          "host": ["{{base_url}}"],
+          "path": ["api", "summarize"]
+        },
+        "description": "Example with technical content."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
