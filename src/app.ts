@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { config } from './config/env.config';
 import { errorHandler } from './middleware/errorHandler';
+import apiRoutes from './routes/api.routes';
 
 const app: Application = express();
 
@@ -25,8 +26,8 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
-// TODO: Add API routes here
-// app.use('/api', apiRoutes);
+// API routes
+app.use('/api', apiRoutes);
 
 // 404 handler
 app.use((_req: Request, res: Response) => {

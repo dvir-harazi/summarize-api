@@ -39,10 +39,10 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Add token counting for input validation (≤ 10k tokens)
 
 ### 5. Create API Route & Controller
-- [ ] Create `/api/summarize` POST endpoint
-- [ ] Implement request validation using Zod
-- [ ] Connect controller to summarization service
-- [ ] Return structured JSON response
+- [x] Create `/api/summarize` POST endpoint
+- [x] Implement request validation using Zod
+- [x] Connect controller to summarization service
+- [x] Return structured JSON response
 
 ### 6. Add Error Handling
 - [ ] Handle invalid input errors (400)
