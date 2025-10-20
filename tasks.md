@@ -22,10 +22,10 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Create basic project folder structure (`src/`, `routes/`, `services/`, `types/`)
 
 ### 2. Define API Contract
-- [ ] Define request schema (text input)
-- [ ] Define response schema (title, summary, keywords, sentiment)
-- [ ] Define error response structure
-- [ ] Document API endpoint: `POST /api/summarize`
+- [x] Define request schema (text input)
+- [x] Define response schema (title, summary, keywords, sentiment)
+- [x] Define error response structure
+- [x] Document API endpoint: `POST /api/summarize`
 
 ### 3. Implement Express Server
 - [ ] Create Express server with basic middleware (CORS, Helmet, JSON parser)
