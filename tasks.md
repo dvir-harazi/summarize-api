@@ -1,0 +1,86 @@
+# MVP Development Tasks
+
+This document outlines the minimal tasks required to complete the MVP (Minimum Viable Product) of the AI Summarization Proxy API.
+
+## Project Goal
+Build an HTTP endpoint that accepts text and returns a structured JSON summary with title, key points, sentiment, and keywords.
+
+## Success Criteria
+- Latency ≤ 5s for ≤ 10k tokens input
+- Summary must only reflect source text (no hallucinations)
+- Output matches JSON schema 100% of the time
+
+---
+
+## Task Checklist
+
+### 1. Project Setup & Configuration
+- [ ] Initialize Node.js project with `package.json`
+- [ ] Install core dependencies (TypeScript, Express.js, Hugging Face SDK, Zod)
+- [ ] Configure TypeScript (`tsconfig.json`)
+- [ ] Set up environment variables (`.env` file with Hugging Face API token)
+- [ ] Create basic project folder structure (`src/`, `routes/`, `services/`, `types/`)
+
+### 2. Define API Contract
+- [ ] Define request schema (text input)
+- [ ] Define response schema (title, summary, keywords, sentiment)
+- [ ] Define error response structure
+- [ ] Document API endpoint: `POST /api/summarize`
+
+### 3. Implement Express Server
+- [ ] Create Express server with basic middleware (CORS, Helmet, JSON parser)
+- [ ] Set up health check endpoint (`GET /health`)
+- [ ] Configure port and basic error handling
+
+### 4. Build Summarization Service
+- [ ] Create service module for LLM integration
+- [ ] Implement Hugging Face API client setup
+- [ ] Design prompt for text summarization (title, summary, keywords, sentiment)
+- [ ] Add token counting for input validation (≤ 10k tokens)
+
+### 5. Create API Route & Controller
+- [ ] Create `/api/summarize` POST endpoint
+- [ ] Implement request validation using Zod
+- [ ] Connect controller to summarization service
+- [ ] Return structured JSON response
+
+### 6. Add Error Handling
+- [ ] Handle invalid input errors (400)
+- [ ] Handle LLM API errors (502/503)
+- [ ] Handle token limit exceeded (413)
+- [ ] Add generic error handler middleware
+
+### 7. Dockerize Application
+- [ ] Create `Dockerfile` for Node.js/TypeScript app
+- [ ] Create `docker-compose.yml` for development
+- [ ] Add `.dockerignore` file
+- [ ] Test Docker build and run
+
+### 8. Create API Documentation
+- [ ] Generate Postman collection JSON file
+- [ ] Document request/response examples
+- [ ] Include error response examples
+
+### 9. Test & Validate
+- [ ] Test endpoint with sample text inputs
+- [ ] Verify response matches schema
+- [ ] Verify latency requirements (≤ 5s)
+- [ ] Test error handling scenarios
+
+### 10. Iterate & Refine Prompt
+- [ ] Test with various text types
+- [ ] Refine LLM prompt if summaries are too long/short
+- [ ] Ensure no hallucinations (factual accuracy)
+- [ ] Validate JSON structure consistency
+
+---
+
+## Out of Scope (MVP)
+The following features are NOT included in the MVP and will be added in future iterations:
+- Authentication & authorization
+- Rate limiting
+- Database persistence
+- PDF/audio file support
+- Advanced logging & analytics
+- Unit/integration tests
+- Additional metadata fields (word_count, created_at)
