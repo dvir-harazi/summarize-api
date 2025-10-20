@@ -15,11 +15,11 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 ## Task Checklist
 
 ### 1. Project Setup & Configuration
-- [ ] Initialize Node.js project with `package.json`
-- [ ] Install core dependencies (TypeScript, Express.js, Hugging Face SDK, Zod)
-- [ ] Configure TypeScript (`tsconfig.json`)
-- [ ] Set up environment variables (`.env` file with Hugging Face API token)
-- [ ] Create basic project folder structure (`src/`, `routes/`, `services/`, `types/`)
+- [x] Initialize Node.js project with `package.json`
+- [x] Install core dependencies (TypeScript, Express.js, Hugging Face SDK, Zod)
+- [x] Configure TypeScript (`tsconfig.json`)
+- [x] Set up environment variables (`.env` file with Hugging Face API token)
+- [x] Create basic project folder structure (`src/`, `routes/`, `services/`, `types/`)
 
 ### 2. Define API Contract
 - [ ] Define request schema (text input)
