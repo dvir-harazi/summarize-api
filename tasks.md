@@ -28,9 +28,9 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Document API endpoint: `POST /api/summarize`
 
 ### 3. Implement Express Server
-- [ ] Create Express server with basic middleware (CORS, Helmet, JSON parser)
-- [ ] Set up health check endpoint (`GET /health`)
-- [ ] Configure port and basic error handling
+- [x] Create Express server with basic middleware (CORS, Helmet, JSON parser)
+- [x] Set up health check endpoint (`GET /health`)
+- [x] Configure port and basic error handling
 
 ### 4. Build Summarization Service
 - [ ] Create service module for LLM integration
