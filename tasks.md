@@ -51,10 +51,10 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Add generic error handler middleware
 
 ### 7. Dockerize Application
-- [ ] Create `Dockerfile` for Node.js/TypeScript app
-- [ ] Create `docker-compose.yml` for development
-- [ ] Add `.dockerignore` file
-- [ ] Test Docker build and run
+- [x] Create `Dockerfile` for Node.js/TypeScript app
+- [x] Create `docker-compose.yml` for development
+- [x] Add `.dockerignore` file
+- [x] Test Docker build and run
 
 ### 8. Create API Documentation
 - [ ] Generate Postman collection JSON file
