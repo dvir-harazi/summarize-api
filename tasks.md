@@ -33,10 +33,10 @@ Build an HTTP endpoint that accepts text and returns a structured JSON summary w
 - [x] Configure port and basic error handling
 
 ### 4. Build Summarization Service
-- [ ] Create service module for LLM integration
-- [ ] Implement Hugging Face API client setup
-- [ ] Design prompt for text summarization (title, summary, keywords, sentiment)
-- [ ] Add token counting for input validation (≤ 10k tokens)
+- [x] Create service module for LLM integration
+- [x] Implement Hugging Face API client setup
+- [x] Design prompt for text summarization (title, summary, keywords, sentiment)
+- [x] Add token counting for input validation (≤ 10k tokens)
 
 ### 5. Create API Route & Controller
 - [ ] Create `/api/summarize` POST endpoint

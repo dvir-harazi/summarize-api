@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { ErrorResponse, ErrorCodes } from '../types/api.types';
 
+// Re-export ErrorCodes for convenience
+export { ErrorCodes };
+
 /**
  * Global error handler middleware
  * Catches all errors and returns standardized error responses
